@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { Bell, X, CheckCheck, AlertTriangle, CheckCircle, Info, Zap } from 'lucide-react';
-import { useFleetState } from '../hooks/useFleetState';
+import { useFleetState } from '../hooks/fleetContext';
 
 const TYPE_CONFIG = {
-  critical: { icon: AlertTriangle, color: 'var(--red)',   bg: 'rgba(248,113,113,0.12)',  border: 'rgba(248,113,113,0.25)' },
-  warning:  { icon: AlertTriangle, color: 'var(--amber)', bg: 'rgba(251,191,36,0.10)',   border: 'rgba(251,191,36,0.25)' },
-  success:  { icon: CheckCircle,   color: 'var(--green)', bg: 'rgba(74,222,128,0.10)',   border: 'rgba(74,222,128,0.25)' },
-  info:     { icon: Info,          color: 'var(--blue)',  bg: 'rgba(57,171,212,0.10)',   border: 'rgba(57,171,212,0.25)' },
+  critical: { icon: AlertTriangle, color: 'var(--red)',   bg: 'rgba(236,111,142,0.12)',  border: 'rgba(236,111,142,0.25)' },
+  warning:  { icon: AlertTriangle, color: 'var(--amber)', bg: 'rgba(255,146,56,0.10)',   border: 'rgba(255,146,56,0.25)' },
+  success:  { icon: CheckCircle,   color: 'var(--green)', bg: 'rgba(88,176,156,0.10)',   border: 'rgba(88,176,156,0.25)' },
+  info:     { icon: Info,          color: 'var(--blue)',  bg: 'rgba(46,202,220,0.10)',   border: 'rgba(46,202,220,0.25)' },
 };
 
 export default function NotificationPanel() {
@@ -36,7 +36,7 @@ export default function NotificationPanel() {
         onClick={handleOpen}
         style={{
           width: '40px', height: '40px', borderRadius: '12px',
-          background: open ? 'rgba(57,171,212,0.15)' : 'var(--card)',
+          background: open ? 'rgba(46,202,220,0.15)' : 'var(--card)',
           border: open ? '1px solid var(--blue)' : '1px solid var(--border)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           color: open ? 'var(--blue)' : 'var(--text)',
@@ -65,9 +65,9 @@ export default function NotificationPanel() {
           style={{
             position: 'absolute', top: 'calc(100% + 10px)', right: 0,
             width: '360px', zIndex: 500,
-            background: 'rgba(13,17,23,0.97)', backdropFilter: 'blur(24px)',
-            border: '1px solid var(--border)', borderRadius: '16px',
-            boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
+            background: 'var(--surface)',
+            border: '1px solid var(--border)', borderRadius: '12px',
+            boxShadow: '0 16px 48px rgba(0,0,0,0.25)',
             overflow: 'hidden',
           }}
         >
@@ -107,8 +107,8 @@ export default function NotificationPanel() {
                     key={n.id}
                     style={{
                       padding: '14px 20px',
-                      borderBottom: '1px solid rgba(255,255,255,0.04)',
-                      background: n.read ? 'transparent' : 'rgba(57,171,212,0.04)',
+                      borderBottom: '1px solid rgba(0,0,0,0.04)',
+                      background: n.read ? 'transparent' : 'rgba(46,202,220,0.04)',
                       display: 'flex', gap: '12px', alignItems: 'flex-start',
                       transition: 'background 0.2s',
                     }}

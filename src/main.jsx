@@ -3,14 +3,17 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
+import { AuthProvider } from './auth/AuthProvider'
 import { FleetProvider } from './hooks/useFleetState'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <FleetProvider>
-        <App />
-      </FleetProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <FleetProvider>
+          <App />
+        </FleetProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )
